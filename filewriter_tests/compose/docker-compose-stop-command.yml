@@ -12,7 +12,7 @@ services:
       - ./config-files/SANS2D_reduced_with_geometry.nxs:/SANS2D_reduced_with_geometry.nxs
 
   filewriter:
-    image: kafka-to-nexus:latest
+    image: screamingudder/file-writer:latest
     network_mode: "host"
     environment:
       CONFIG_FILE: "/file_writer_config.ini"
