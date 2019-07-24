@@ -1,4 +1,4 @@
-from helpers.kafkahelpers import (
+from helpers.kafka_helpers import (
     create_producer,
     send_writer_command,
     consume_everything,

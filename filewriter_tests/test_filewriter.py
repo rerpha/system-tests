@@ -1,4 +1,4 @@
-from helpers.kafkahelpers import create_producer, send_writer_command
+from helpers.kafka_helpers import create_producer, send_writer_command
 from helpers.nexushelpers import OpenNexusFileWhenAvailable
 from time import sleep
 import numpy as np

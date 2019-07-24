@@ -1,4 +1,4 @@
-from helpers.kafkahelpers import create_producer, send_writer_command, create_consumer
+from helpers.kafka_helpers import create_producer, send_writer_command, create_consumer
 from time import sleep
 
 
