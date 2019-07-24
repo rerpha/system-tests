@@ -20,7 +20,7 @@ def test_data_reaches_file(docker_compose_fw):
     send_writer_command("filewriter_tests/commands/writer-exit.json", producer)
     producer.flush()
 
-    filepath = "filewriter_tests/output-files/output_file.nxs"
+    filepath = "output-files/output_file.nxs"
     with OpenNexusFileWhenAvailable(filepath) as file:
         # Static checks
         assert not file.swmr_mode
