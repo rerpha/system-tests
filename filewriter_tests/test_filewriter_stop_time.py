@@ -13,7 +13,7 @@ def test_filewriter_clears_stop_time_between_jobs(docker_compose_stop_command):
     sleep(10)
     topic = "TEST_writerCommand"
     send_writer_command(
-        "commands/commandwithstoptime.json",
+        "filewriter_tests/commands/commandwithstoptime.json",
         producer,
         topic=topic,
         stop_time=str(int(unix_time_milliseconds(datetime.utcnow()))),

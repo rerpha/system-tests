@@ -9,7 +9,7 @@ def test_static_data_reaches_file(docker_compose_fw):
     sleep(20)
     # Start file writing
     send_writer_command(
-        "filewriter_tests/commands/static-data-add.json", producer, start_time=docker_compose
+        "filewriter_tests/commands/static-data-add.json", producer, start_time=docker_compose_fw
     )
     producer.flush()
     # Give it some time to accumulate data

@@ -12,7 +12,7 @@ services:
       - ./config-files/SANS2D_reduced_with_geometry.nxs:/SANS2D_reduced_with_geometry.nxs
 
   filewriter:
-    image: screamingudder/file-writer:324079d
+    image: screamingudder/file-writer:3e667e1
     network_mode: "host"
     environment:
       CONFIG_FILE: "/file_writer_config.ini"

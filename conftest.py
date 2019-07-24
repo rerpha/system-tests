@@ -1,9 +1,12 @@
+from datetime import datetime
 import os.path
 import pytest
 from compose.cli.main import TopLevelCommand, project_from_options
 from confluent_kafka.admin import AdminClient
 from confluent_kafka import Producer
 from time import sleep
+
+from helpers.timehelpers import unix_time_milliseconds
 
 
 def wait_until_kafka_ready(docker_cmd, docker_options):
@@ -84,11 +87,13 @@ def build_and_run(options, request):
     cmd = TopLevelCommand(project)
     run_containers(cmd, options)
 
+    start_time = str(int(unix_time_milliseconds(datetime.utcnow())))
+
     def fin():
         # Stop the containers then remove them and their volumes (--volumes option)
         print("containers stopping", flush=True)
         log_options = dict(options)
-        log_options["SERVICE"] = ["forwarder"]
+        # log_options["SERVICE"] = ["forwarder"]
         cmd.logs(log_options)
         options["--timeout"] = 30
         cmd.down(options)
@@ -97,6 +102,8 @@ def build_and_run(options, request):
     # Using a finalizer rather than yield in the fixture means
     # that the containers will be brought down even if tests fail
     request.addfinalizer(fin)
+
+    return start_time
 
 
 @pytest.fixture(scope="session", autouse=True)
