@@ -2,9 +2,17 @@ from confluent_kafka import TopicPartition
 from helpers.producerwrapper import ProducerWrapper
 from helpers.f142_logdata.Value import Value
 from time import sleep
-from helpers.kafka_helpers import create_consumer, poll_for_valid_message, poll_for_connection_status_message
-from helpers.flatbuffer_helpers import check_expected_values, check_expected_array_values, \
-    check_multiple_expected_values, check_expected_connection_status_values
+from helpers.kafka_helpers import (
+    create_consumer,
+    poll_for_valid_message,
+    poll_for_connection_status_message,
+)
+from helpers.flatbuffer_helpers import (
+    check_expected_values,
+    check_expected_array_values,
+    check_multiple_expected_values,
+    check_expected_connection_status_values,
+)
 from helpers.epics_helpers import change_pv_value, change_array_pv_value
 from helpers.PVs import PVDOUBLE, PVSTR, PVLONG, PVENUM, PVFLOATARRAY
 from helpers.ep00.EventType import EventType
@@ -25,9 +33,9 @@ def teardown_function(function):
         PVDOUBLE: 0.0,
         # We have to use this as the second parameter for caput gets parsed as empty so does not change the value of
         # the PV
-        PVSTR: "\"\"",
+        PVSTR: '""',
         PVLONG: 0,
-        PVENUM: "INIT"
+        PVENUM: "INIT",
     }
 
     for key, value in defaults.items():
@@ -91,7 +99,9 @@ def test_forwarder_sends_pv_updates_single_floatarray(docker_compose_no_command)
 
     first_msg, _ = poll_for_valid_message(cons)
     expectedarray = [1.1, 2.2, 3.3]
-    check_expected_array_values(first_msg, Value.ArrayFloat, PVFLOATARRAY, expectedarray)
+    check_expected_array_values(
+        first_msg, Value.ArrayFloat, PVFLOATARRAY, expectedarray
+    )
     cons.close()
 
 
@@ -113,7 +123,7 @@ def test_forwarder_updates_multiple_pvs(docker_compose_no_command):
     cons.subscribe([data_topic])
     sleep(4)
 
-    expected_values = {PVSTR: (Value.String, b''), PVLONG: (Value.Int, 0)}
+    expected_values = {PVSTR: (Value.String, b""), PVLONG: (Value.Int, 0)}
 
     first_msg, _ = poll_for_valid_message(cons)
     second_msg, _ = poll_for_valid_message(cons)
@@ -149,12 +159,17 @@ def test_forwarder_status_shows_added_pvs(docker_compose_no_command):
     status_msg, _ = poll_for_valid_message(cons, expected_file_identifier=None)
 
     status_json = json.loads(status_msg)
-    names_of_channels_being_forwarded = {stream['channel_name'] for stream in status_json['streams']}
+    names_of_channels_being_forwarded = {
+        stream["channel_name"] for stream in status_json["streams"]
+    }
     expected_names_of_channels_being_forwarded = {PVSTR, PVLONG}
 
-    assert expected_names_of_channels_being_forwarded == names_of_channels_being_forwarded, \
-        f"Expect these channels to be configured as forwarded: {expected_names_of_channels_being_forwarded}, " \
-            f"but status message report these as forwarded: {names_of_channels_being_forwarded}"
+    assert (
+        expected_names_of_channels_being_forwarded == names_of_channels_being_forwarded
+    ), (
+        f"Expect these channels to be configured as forwarded: {expected_names_of_channels_being_forwarded}, "
+        f"but status message report these as forwarded: {names_of_channels_being_forwarded}"
+    )
 
     cons.close()
 
@@ -179,7 +194,7 @@ def test_forwarder_updates_pv_when_config_change_add_two_pvs(docker_compose_no_c
     poll_for_valid_message(cons)
     poll_for_valid_message(cons)
 
-    expected_values = {PVSTR: (Value.String, b''), PVLONG: (Value.Int, 0)}
+    expected_values = {PVSTR: (Value.String, b""), PVLONG: (Value.Int, 0)}
 
     messages = [poll_for_valid_message(cons)[0], poll_for_valid_message(cons)[0]]
     check_multiple_expected_values(messages, expected_values)

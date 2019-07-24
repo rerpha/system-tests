@@ -1,5 +1,9 @@
 from helpers.epics_helpers import change_pv_value
-from helpers.kafka_helpers import create_consumer, poll_for_valid_message, MsgErrorException
+from helpers.kafka_helpers import (
+    create_consumer,
+    poll_for_valid_message,
+    MsgErrorException,
+)
 from helpers.PVs import PVDOUBLE
 import pytest
 import docker
@@ -19,10 +23,10 @@ def test_long_run(docker_compose_lr):
     :return: None
     """
     # Set up consumer now and subscribe from earliest offset on data topic
-    cons = create_consumer('earliest')
-    cons.subscribe(['TEST_forwarderDataLR'])
-    with open('logs/forwarder_lr_stats.log', 'w+') as stats_file:
-        with open("logs/forwarder_lr_missedupdates.log", 'w+') as file:
+    cons = create_consumer("earliest")
+    cons.subscribe(["TEST_forwarderDataLR"])
+    with open("logs/forwarder_lr_stats.log", "w+") as stats_file:
+        with open("logs/forwarder_lr_missedupdates.log", "w+") as file:
             for i in range(5150):  # minimum 12 hours with 4 second sleep time
                 # Change pv value now
                 change_pv_value(PVDOUBLE, i)
@@ -37,7 +41,7 @@ def test_long_run(docker_compose_lr):
                     check_expected_values(msg, Value.Double, PVDOUBLE, float(i))
                 except AssertionError:
                     # Message is either incorrect or empty - log expected value to file
-                    file.write(str(i) + '\n')
+                    file.write(str(i) + "\n")
                 container = False
                 # Report stats every 10th iteration
                 if i % 10 == 0:
@@ -47,5 +51,9 @@ def test_long_run(docker_compose_lr):
                             container = item
                             break
                     if container:
-                        stats_file.write("{}\t{}\n".format(datetime.now(), container.stats(stream=False)['memory_stats']['usage']))
-
+                        stats_file.write(
+                            "{}\t{}\n".format(
+                                datetime.now(),
+                                container.stats(stream=False)["memory_stats"]["usage"],
+                            )
+                        )
