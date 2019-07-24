@@ -5,12 +5,12 @@ from time import sleep
 def test_ignores_commands_with_incorrect_id(docker_compose_multiple_instances):
     producer = create_producer()
     sleep(20)
-    send_writer_command("commands/add-command-never-ends.json", producer)
-    send_writer_command("commands/add-command-never-ends2.json", producer)
+    send_writer_command("filewriter_tests/commands/add-command-never-ends.json", producer)
+    send_writer_command("filewriter_tests/commands/add-command-never-ends2.json", producer)
 
     sleep(10)
 
-    send_writer_command("commands/writer-stop-single.json", producer)
+    send_writer_command("filewriter_tests/commands/writer-stop-single.json", producer)
 
     consumer = create_consumer()
     consumer.subscribe(["TEST_writerStatus2"])

@@ -8,7 +8,7 @@ services:
       CONFIG_FILE: "/file_writer_config.ini"
     volumes:
       - ./config-files/file_writer_config1.ini:/file_writer_config.ini
-      - ./output-files/:/output-files/
+      - ../output-files/:/output-files/
       - ./logs/:/filewriter_logs/
 
   filewriter2:
@@ -18,5 +18,5 @@ services:
       CONFIG_FILE: "/file_writer_config.ini"
     volumes:
       - ./config-files/file_writer_config2.ini:/file_writer_config.ini
-      - ./output-files/:/output-files/
+      - ../output-files/:/output-files/
       - ./logs/:/filewriter_logs/

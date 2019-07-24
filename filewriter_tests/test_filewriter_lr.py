@@ -39,7 +39,7 @@ def test_long_run(docker_compose_long_running):
     sleep(20)
     # Start file writing
     send_writer_command(
-        "commands/longrunning.json",
+        "filewriter_tests/commands/longrunning.json",
         producer,
         topic="TEST_writerCommandLR",
         start_time=docker_compose_long_running,
@@ -54,12 +54,12 @@ def test_long_run(docker_compose_long_running):
         sleep(3)
 
     send_writer_command(
-        "commands/stop-command-lr.json", producer, topic="TEST_writerCommandLR"
+        "filewriter_tests/commands/stop-command-lr.json", producer, topic="TEST_writerCommandLR"
     )
     producer.flush()
     sleep(30)
 
-    filepath = "output-files/output_file_lr.nxs"
+    filepath = "filewriter_tests/output-files/output_file_lr.nxs"
     with OpenNexusFileWhenAvailable(filepath) as file:
         counter = 1
         # check values are contiguous

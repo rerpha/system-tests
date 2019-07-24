@@ -20,7 +20,7 @@ def test_filewriter_clears_stop_time_between_jobs(docker_compose_stop_command):
     )
 
     sleep(10)
-    send_writer_command("commands/commandwithnostoptime.json", producer, topic=topic)
+    send_writer_command("filewriter_tests/commands/commandwithnostoptime.json", producer, topic=topic)
 
     sleep(10)
     msgs = consume_everything("TEST_writerStatus")

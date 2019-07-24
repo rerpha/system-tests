@@ -28,5 +28,5 @@ services:
       CONFIG_FILE: "/longrunning.ini"
     volumes:
       - ./config-files/longrunning.ini:/longrunning.ini
-      - ./output-files/:/output-files/
+      - ../output-files/:/output-files/
       - ./logs/:/filewriter_logs/
