@@ -1,0 +1,174 @@
+[2019-06-27 11:36:01.166058] [trace] [processID: 6]: Registered schema f142
+[2019-06-27 11:36:01.166083] [trace] [processID: 6]: Registered schema TdcTime
+[2019-06-27 11:36:01.166151] [debug] [processID: 6]: set config: api.version.request = true
+[2019-06-27 11:36:01.166163] [debug] [processID: 6]: set config: batch.num.messages = 100000
+[2019-06-27 11:36:01.166177] [debug] [processID: 6]: set config: coordinator.query.interval.ms = 2000
+[2019-06-27 11:36:01.166189] [debug] [processID: 6]: set config: fetch.message.max.bytes = 24117248
+[2019-06-27 11:36:01.166199] [debug] [processID: 6]: set config: heartbeat.interval.ms = 500
+[2019-06-27 11:36:01.166211] [debug] [processID: 6]: set config: message.max.bytes = 24117248
+[2019-06-27 11:36:01.166220] [debug] [processID: 6]: set config: metadata.request.timeout.ms = 2000
+[2019-06-27 11:36:01.166231] [debug] [processID: 6]: set config: queue.buffering.max.kbytes = 819200
+[2019-06-27 11:36:01.166241] [debug] [processID: 6]: set config: queue.buffering.max.messages = 100000
+[2019-06-27 11:36:01.166251] [debug] [processID: 6]: set config: queue.buffering.max.ms = 50
+[2019-06-27 11:36:01.166261] [debug] [processID: 6]: set config: receive.message.max.bytes = 24117248
+[2019-06-27 11:36:01.166272] [debug] [processID: 6]: set config: socket.timeout.ms = 2000
+[2019-06-27 11:36:01.166280] [debug] [processID: 6]: set config: statistics.interval.ms = 600000
+[2019-06-27 11:36:01.166650] [info] [processID: 6]: Consumer::add_topic  TEST_forwarderConfig
+[2019-06-27 11:36:01.241021] [debug] [processID: 6]: channel_name: SIMPLE:DOUBLE
+[2019-06-27 11:36:01.241055] [trace] [processID: 6]: EpicsClientFactoryInit
+[2019-06-27 11:36:01.241069] [debug] [processID: 6]: START  Epics factories
+[2019-06-27 11:36:01.241925] [trace] [processID: 6]: ChannelRequester::channelCreated:  (int)status.isOK(): 1
+[2019-06-27 11:36:01.243973] [debug] [processID: 6]: InstanceSet::producer_topic for: localhost:9092, TEST_forwarderData_pv_from_config
+[2019-06-27 11:36:01.244045] [debug] [processID: 6]: set config: api.version.request = true
+[2019-06-27 11:36:01.244065] [debug] [processID: 6]: set config: batch.num.messages = 100000
+[2019-06-27 11:36:01.244081] [debug] [processID: 6]: set config: coordinator.query.interval.ms = 2000
+[2019-06-27 11:36:01.244112] [debug] [processID: 6]: set config: fetch.message.max.bytes = 24117248
+[2019-06-27 11:36:01.244125] [debug] [processID: 6]: set config: heartbeat.interval.ms = 500
+[2019-06-27 11:36:01.244137] [debug] [processID: 6]: set config: message.max.bytes = 24117248
+[2019-06-27 11:36:01.244155] [debug] [processID: 6]: set config: metadata.request.timeout.ms = 2000
+[2019-06-27 11:36:01.244169] [debug] [processID: 6]: set config: queue.buffering.max.kbytes = 819200
+[2019-06-27 11:36:01.244183] [debug] [processID: 6]: set config: queue.buffering.max.messages = 100000
+[2019-06-27 11:36:01.244198] [debug] [processID: 6]: set config: queue.buffering.max.ms = 50
+[2019-06-27 11:36:01.244212] [debug] [processID: 6]: set config: receive.message.max.bytes = 24117248
+[2019-06-27 11:36:01.244225] [debug] [processID: 6]: set config: socket.timeout.ms = 2000
+[2019-06-27 11:36:01.244238] [debug] [processID: 6]: set config: statistics.interval.ms = 600000
+[2019-06-27 11:36:01.244467] [info] [processID: 6]: new Kafka producer: rdkafka#producer-2, with brokers: localhost:9092
+[2019-06-27 11:36:01.244522] [trace] [processID: 6]: Constructor topic: TEST_forwarderData_pv_from_config
+[2019-06-27 11:36:01.246546] [debug] [processID: 6]: InstanceSet::producer_topic for: localhost:9092, TEST_forwarderData_pv_from_config
+[2019-06-27 11:36:01.246590] [trace] [processID: 6]: Constructor topic: TEST_forwarderData_pv_from_config
+[2019-06-27 11:36:01.246666] [debug] [processID: 6]: set config: api.version.request = true
+[2019-06-27 11:36:01.246684] [debug] [processID: 6]: set config: batch.num.messages = 100000
+[2019-06-27 11:36:01.246696] [debug] [processID: 6]: set config: coordinator.query.interval.ms = 2000
+[2019-06-27 11:36:01.246709] [debug] [processID: 6]: set config: fetch.message.max.bytes = 24117248
+[2019-06-27 11:36:01.246836] [debug] [processID: 6]: set config: heartbeat.interval.ms = 500
+[2019-06-27 11:36:01.246852] [debug] [processID: 6]: set config: message.max.bytes = 24117248
+[2019-06-27 11:36:01.246864] [debug] [processID: 6]: set config: metadata.request.timeout.ms = 2000
+[2019-06-27 11:36:01.246875] [debug] [processID: 6]: set config: queue.buffering.max.kbytes = 819200
+[2019-06-27 11:36:01.246886] [debug] [processID: 6]: set config: queue.buffering.max.messages = 100000
+[2019-06-27 11:36:01.246897] [debug] [processID: 6]: set config: queue.buffering.max.ms = 50
+[2019-06-27 11:36:01.246909] [debug] [processID: 6]: set config: receive.message.max.bytes = 24117248
+[2019-06-27 11:36:01.246920] [debug] [processID: 6]: set config: socket.timeout.ms = 2000
+[2019-06-27 11:36:01.246930] [debug] [processID: 6]: set config: statistics.interval.ms = 600000
+[2019-06-27 11:36:01.247171] [info] [processID: 6]: new Kafka producer: rdkafka#producer-3, with brokers: localhost:9092
+[2019-06-27 11:36:01.247204] [trace] [processID: 6]: Constructor topic: TEST_forwarderStatus
+[2019-06-27 11:36:01.269768] [trace] [processID: 6]: channel state change: CONNECTED  for: CHANNEL  : SIMPLE:DOUBLE
+STATE    : CONNECTED
+ADDRESS  : 130.246.57.180:5064
+
+[2019-06-27 11:36:01.269862] [info] [processID: 6]: EpicsClientMonitor::handleConnectionStateChange  CONNECTED
+[2019-06-27 11:36:01.269994] [trace] [processID: 6]: monitoringStart
+[2019-06-27 11:36:01.270094] [debug] [processID: 6]: FwdMonitorRequester FwdMonitorRequester-0
+[2019-06-27 11:36:01.270199] [debug] [processID: 6]: success and OK
+[2019-06-27 11:36:01.347350] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 1
+[2019-06-27 11:36:01.347368] [debug] [processID: 6]: Give worker  0  items:   1  stream:   0
+[2019-06-27 11:36:01.347536] [debug] [processID: 6]: status: {"service_id":"","streams":[{"channel_name":"SIMPLE:DOUBLE","converters":[{"broker":"localhost:9092","schema":"f142","topic":"TEST_forwarderData_pv_from_config"}],"epics_connection_status":"CONNECTED","queue_size":0}]}
+[2019-06-27 11:36:01.847717] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 2
+[2019-06-27 11:36:02.347989] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 2
+[2019-06-27 11:36:02.848410] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 2
+[2019-06-27 11:36:03.256629] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 1  outq_len: 0
+[2019-06-27 11:36:03.256669] [info] [processID: 6]: Broker: localhost:9092  total: 2  outq: 0
+[2019-06-27 11:36:03.256684] [info] [processID: 6]: dt:    8  m:    0.001  b:   0.000.072
+[2019-06-27 11:36:03.849078] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:04.349693] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:04.349965] [debug] [processID: 6]: status: {"service_id":"","streams":[{"channel_name":"SIMPLE:DOUBLE","converters":[{"broker":"localhost:9092","schema":"f142","topic":"TEST_forwarderData_pv_from_config"}],"epics_connection_status":"CONNECTED","queue_size":0}]}
+[2019-06-27 11:36:04.850525] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:05.350884] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:05.350978] [info] [processID: 6]: Broker: localhost:9092  total: 2  outq: 0
+[2019-06-27 11:36:05.351028] [info] [processID: 6]: dt:  100  m:    0.001  b:   0.000.072
+[2019-06-27 11:36:05.851511] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:06.351785] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:06.852128] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:07.352513] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:07.352804] [debug] [processID: 6]: status: {"service_id":"","streams":[{"channel_name":"SIMPLE:DOUBLE","converters":[{"broker":"localhost:9092","schema":"f142","topic":"TEST_forwarderData_pv_from_config"}],"epics_connection_status":"CONNECTED","queue_size":0}]}
+[2019-06-27 11:36:07.352982] [info] [processID: 6]: Broker: localhost:9092  total: 2  outq: 0
+[2019-06-27 11:36:07.353063] [info] [processID: 6]: dt:  100  m:    0.001  b:   0.000.072
+[2019-06-27 11:36:07.456620] [debug] [processID: 6]: Give worker  0  items:   1  stream:   0
+[2019-06-27 11:36:07.753269] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 1  outq_len: 0
+[2019-06-27 11:36:08.353645] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:08.854035] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:09.354485] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:09.354589] [info] [processID: 6]: Broker: localhost:9092  total: 3  outq: 0
+[2019-06-27 11:36:09.354644] [info] [processID: 6]: dt:  100  m:    0.002  b:   0.000.160
+[2019-06-27 11:36:09.855037] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:10.355428] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:10.355729] [debug] [processID: 6]: status: {"service_id":"","streams":[{"channel_name":"SIMPLE:DOUBLE","converters":[{"broker":"localhost:9092","schema":"f142","topic":"TEST_forwarderData_pv_from_config"}],"epics_connection_status":"CONNECTED","queue_size":0}]}
+[2019-06-27 11:36:10.856315] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:11.356701] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:11.356801] [info] [processID: 6]: Broker: localhost:9092  total: 3  outq: 0
+[2019-06-27 11:36:11.356866] [info] [processID: 6]: dt:  100  m:    0.002  b:   0.000.160
+[2019-06-27 11:36:11.857043] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:12.357412] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:12.857809] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:13.358333] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:13.358637] [debug] [processID: 6]: status: {"service_id":"","streams":[{"channel_name":"SIMPLE:DOUBLE","converters":[{"broker":"localhost:9092","schema":"f142","topic":"TEST_forwarderData_pv_from_config"}],"epics_connection_status":"CONNECTED","queue_size":0}]}
+[2019-06-27 11:36:13.358807] [info] [processID: 6]: Broker: localhost:9092  total: 3  outq: 0
+[2019-06-27 11:36:13.358872] [info] [processID: 6]: dt:  100  m:    0.002  b:   0.000.160
+[2019-06-27 11:36:13.859472] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:14.360007] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:14.860398] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:15.360948] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:15.361054] [info] [processID: 6]: Broker: localhost:9092  total: 3  outq: 0
+[2019-06-27 11:36:15.361112] [info] [processID: 6]: dt:  100  m:    0.002  b:   0.000.160
+[2019-06-27 11:36:15.861585] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:16.362165] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:16.362426] [debug] [processID: 6]: status: {"service_id":"","streams":[{"channel_name":"SIMPLE:DOUBLE","converters":[{"broker":"localhost:9092","schema":"f142","topic":"TEST_forwarderData_pv_from_config"}],"epics_connection_status":"CONNECTED","queue_size":0}]}
+[2019-06-27 11:36:16.862845] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:17.363246] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:17.363365] [info] [processID: 6]: Broker: localhost:9092  total: 3  outq: 0
+[2019-06-27 11:36:17.363424] [info] [processID: 6]: dt:  100  m:    0.002  b:   0.000.160
+[2019-06-27 11:36:17.863881] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:18.364217] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:18.864902] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:19.365443] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:19.365734] [debug] [processID: 6]: status: {"service_id":"","streams":[{"channel_name":"SIMPLE:DOUBLE","converters":[{"broker":"localhost:9092","schema":"f142","topic":"TEST_forwarderData_pv_from_config"}],"epics_connection_status":"CONNECTED","queue_size":0}]}
+[2019-06-27 11:36:19.365904] [info] [processID: 6]: Broker: localhost:9092  total: 3  outq: 0
+[2019-06-27 11:36:19.365971] [info] [processID: 6]: dt:  100  m:    0.002  b:   0.000.160
+[2019-06-27 11:36:19.866441] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:20.366807] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:20.867183] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:21.367686] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:21.367787] [info] [processID: 6]: Broker: localhost:9092  total: 3  outq: 0
+[2019-06-27 11:36:21.367837] [info] [processID: 6]: dt:  100  m:    0.002  b:   0.000.160
+[2019-06-27 11:36:21.868159] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:22.368708] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:22.368973] [debug] [processID: 6]: status: {"service_id":"","streams":[{"channel_name":"SIMPLE:DOUBLE","converters":[{"broker":"localhost:9092","schema":"f142","topic":"TEST_forwarderData_pv_from_config"}],"epics_connection_status":"CONNECTED","queue_size":0}]}
+[2019-06-27 11:36:22.869377] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:23.369780] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:23.369883] [info] [processID: 6]: Broker: localhost:9092  total: 3  outq: 0
+[2019-06-27 11:36:23.369934] [info] [processID: 6]: dt:  100  m:    0.002  b:   0.000.160
+[2019-06-27 11:36:23.870431] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:24.370820] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:24.871451] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:25.371822] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:25.372147] [debug] [processID: 6]: status: {"service_id":"","streams":[{"channel_name":"SIMPLE:DOUBLE","converters":[{"broker":"localhost:9092","schema":"f142","topic":"TEST_forwarderData_pv_from_config"}],"epics_connection_status":"CONNECTED","queue_size":0}]}
+[2019-06-27 11:36:25.372392] [info] [processID: 6]: Broker: localhost:9092  total: 3  outq: 0
+[2019-06-27 11:36:25.372469] [info] [processID: 6]: dt:  100  m:    0.002  b:   0.000.160
+[2019-06-27 11:36:25.872795] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:26.373198] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:26.873570] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:27.373978] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:27.374073] [info] [processID: 6]: Broker: localhost:9092  total: 3  outq: 0
+[2019-06-27 11:36:27.374124] [info] [processID: 6]: dt:  100  m:    0.002  b:   0.000.160
+[2019-06-27 11:36:27.874482] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:28.374882] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:28.375174] [debug] [processID: 6]: status: {"service_id":"","streams":[{"channel_name":"SIMPLE:DOUBLE","converters":[{"broker":"localhost:9092","schema":"f142","topic":"TEST_forwarderData_pv_from_config"}],"epics_connection_status":"CONNECTED","queue_size":0}]}
+[2019-06-27 11:36:28.875818] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:29.376298] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:29.376385] [info] [processID: 6]: Broker: localhost:9092  total: 3  outq: 0
+[2019-06-27 11:36:29.376431] [info] [processID: 6]: dt:  100  m:    0.002  b:   0.000.160
+[2019-06-27 11:36:29.876765] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:30.377063] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:30.877458] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:31.377927] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:31.378218] [debug] [processID: 6]: status: {"service_id":"","streams":[{"channel_name":"SIMPLE:DOUBLE","converters":[{"broker":"localhost:9092","schema":"f142","topic":"TEST_forwarderData_pv_from_config"}],"epics_connection_status":"CONNECTED","queue_size":0}]}
+[2019-06-27 11:36:31.378404] [info] [processID: 6]: Broker: localhost:9092  total: 3  outq: 0
+[2019-06-27 11:36:31.378481] [info] [processID: 6]: dt:  100  m:    0.002  b:   0.000.160
+[2019-06-27 11:36:31.878831] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:32.379299] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:32.879730] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:33.380028] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:33.380149] [info] [processID: 6]: Broker: localhost:9092  total: 3  outq: 0
+[2019-06-27 11:36:33.380200] [info] [processID: 6]: dt:  100  m:    0.002  b:   0.000.160
+[2019-06-27 11:36:33.880527] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:34.380860] [trace] [processID: 6]: IID: 0  broker: localhost:9092  rd_kafka_poll()  served: 0  outq_len: 0
+[2019-06-27 11:36:34.381129] [debug] [processID: 6]: status: {"service_id":"","streams":[{"channel_name":"SIMPLE:DOUBLE","converters":[{"broker":"localhost:9092","schema":"f142","topic":"TEST_

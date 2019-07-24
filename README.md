@@ -1,2 +1,5 @@
-# system-tests
-Uni major project system testing suite 
+## system-tests
+
+My major project for uni. 
+
+Aim is to produce a repeatable way of testing containerised applications with multiple distributed components.
