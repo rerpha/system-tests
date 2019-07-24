@@ -3,7 +3,7 @@ version: '2'
 
 services:
   forwarder:
-    image: screamingudder/forwarder:latest
+    image: screamingudder/forwarder:0ba4430
     network_mode: "host"
     volumes:
       - ../config-files/forwarder_config_no_command.ini:/forwarder_config_no_command.ini

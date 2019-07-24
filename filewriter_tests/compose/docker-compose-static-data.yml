@@ -2,7 +2,7 @@ version: '2'
 
 services:
   filewriter:
-    image: screamingudder/file-writer:latest
+    image: screamingudder/file-writer:324079d
     network_mode: "host"
     environment:
       CONFIG_FILE: "/file_writer_config_static_data.ini"

@@ -22,7 +22,7 @@ services:
   filewriter:
     depends_on:
       - forwarder
-    image: screamingudder/file-writer:latest
+    image: screamingudder/file-writer:324079d
     network_mode: "host"
     environment:
       CONFIG_FILE: "/longrunning.ini"
