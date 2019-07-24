@@ -144,7 +144,7 @@ def docker_compose(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "forwarder"
-    options["--file"] = ["compose/forwarder/docker-compose.yml"]
+    options["--file"] = ["forwarder/compose/docker-compose.yml"]
 
     build_and_run(options, request)
 
@@ -159,7 +159,7 @@ def docker_compose_no_command(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "forwarderNoCommand"
-    options["--file"] = ["compose/forwarder/docker-compose-no-command.yml"]
+    options["--file"] = ["forwarder/compose/docker-compose-no-command.yml"]
 
     build_and_run(options, request)
 
@@ -174,7 +174,7 @@ def docker_compose_fake_epics(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "fake"
-    options["--file"] = ["compose/forwarder/docker-compose-fake-epics.yml"]
+    options["--file"] = ["forwarder/compose/docker-compose-fake-epics.yml"]
 
     build_and_run(options, request)
 
@@ -189,7 +189,7 @@ def docker_compose_idle_updates(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "idle"
-    options["--file"] = ["compose/forwarder/docker-compose-idle-updates.yml"]
+    options["--file"] = ["forwarder/compose/docker-compose-idle-updates.yml"]
 
     build_and_run(options, request)
 
@@ -205,7 +205,7 @@ def docker_compose_idle_updates_long_period(request):
     options = common_options
     options["--project-name"] = "longi"
     options["--file"] = [
-        "compose/forwarder/docker-compose-idle-updates-long-period.yml"
+        "forwarder/compose/docker-compose-idle-updates-long-period.yml"
     ]
 
     build_and_run(options, request)
@@ -221,6 +221,6 @@ def docker_compose_lr(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "lr"
-    options["--file"] = ["compose/forwarder/docker-compose-long-running.yml"]
+    options["--file"] = ["forwarder/compose/docker-compose-long-running.yml"]
 
     build_and_run(options, request)
