@@ -229,7 +229,6 @@ def docker_compose_lr(request):
 # File-writer tests
 
 
-
 @pytest.fixture(scope="module")
 def docker_compose_fw(request):
     """

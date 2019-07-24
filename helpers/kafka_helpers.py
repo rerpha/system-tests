@@ -1,8 +1,10 @@
-from confluent_kafka import Consumer
+from confluent_kafka import Consumer, Producer, TopicPartition
 import uuid
 from helpers.f142_logdata import LogData
 from helpers.ep00 import EpicsConnectionInfo
 from pytictoc import TicToc
+
+from helpers.flatbuffer_helpers import create_f142_message
 
 
 class MsgErrorException(Exception):
@@ -93,3 +95,50 @@ def create_consumer(offset_reset="earliest"):
     }
     cons = Consumer(**consumer_config)
     return cons
+
+
+def create_producer():
+    producer_config = {
+        "bootstrap.servers": "localhost:9092",
+        "message.max.bytes": "20000000",
+    }
+    producer = Producer(**producer_config)
+    return producer
+
+
+def send_writer_command(
+    filepath, producer, topic="TEST_writerCommand", start_time=None, stop_time=None
+):
+    with open(filepath, "r") as cmd_file:
+        data = cmd_file.read().replace("\n", "")
+        if start_time is not None:
+            data = data.replace("STARTTIME", start_time)
+        if stop_time is not None:
+            data = data.replace("STOPTIME", stop_time)
+    producer.produce(topic, data)
+
+
+def consume_everything(topic):
+    consumer = Consumer(
+        {"bootstrap.servers": "localhost:9092", "group.id": uuid.uuid4()}
+    )
+    topicpart = TopicPartition(topic, 0, 0)
+    consumer.assign([topicpart])
+    low, high = consumer.get_watermark_offsets(topicpart)
+
+    return consumer.consume(high - 1)
+
+
+def publish_f142_message(producer, topic, kafka_timestamp=None):
+    """
+    Publish an f142 message to a given topic.
+    Optionally set the timestamp in the kafka header to allow, for example, fake "historical" data.
+    :param topic: Name of topic to publish to
+    :param kafka_timestamp: Timestamp to set in the Kafka header (milliseconds after unix epoch)
+    """
+    f142_message = create_f142_message(kafka_timestamp)
+    producer.produce(topic, f142_message, timestamp=kafka_timestamp)
+    # Flush producer queue after each message, we don't want the messages to be batched in our tests
+    # for example in test_filewriter_can_write_data_when_start_and_stop_time_are_in_the_past
+    producer.flush()
+    producer.poll(0)
