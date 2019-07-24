@@ -224,3 +224,68 @@ def docker_compose_lr(request):
     options["--file"] = ["forwarder/compose/docker-compose-long-running.yml"]
 
     build_and_run(options, request)
+
+
+# File-writer tests
+
+
+
+@pytest.fixture(scope="module")
+def docker_compose_fw(request):
+    """
+    :type request: _pytest.python.FixtureRequest
+    """
+    print("Started preparing test environment...", flush=True)
+
+    # Options must be given as long form
+    options = common_options
+    options["--file"] = ["docker-compose.yml"]
+    return build_and_run(options, request)
+
+
+@pytest.fixture(scope="module")
+def docker_compose_multiple_instances(request):
+    """
+    :type request: _pytest.python.FixtureRequest
+    """
+    print("Started preparing test environment...", flush=True)
+
+    # Options must be given as long form
+    options = common_options
+    options["--file"] = ["docker-compose-multiple-instances.yml"]
+    return build_and_run(options, request)
+
+
+@pytest.fixture(scope="module")
+def docker_compose_stop_command(request):
+    """
+    :type request: _pytest.python.FixtureRequest
+    """
+    print("Started preparing test environment...", flush=True)
+    options = common_options
+    options["--file"] = ["docker-compose-stop-command.yml"]
+    return build_and_run(options, request)
+
+
+@pytest.fixture(scope="module")
+def docker_compose_static_data(request):
+    """
+    :type request: _pytest.python.FixtureRequest
+    """
+    print("Started preparing test environment...", flush=True)
+    # Options must be given as long form
+    options = common_options
+    options["--file"] = ["docker-compose-static-data.yml"]
+    return build_and_run(options, request)
+
+
+@pytest.fixture(scope="module", autouse=False)
+def docker_compose_long_running(request):
+    """
+    :type request: _pytest.python.FixtureRequest
+    """
+    print("Started preparing test environment...", flush=True)
+    # Options must be given as long form
+    options = common_options
+    options["--file"] = ["docker-compose-lr.yml"]
+    return build_and_run(options, request)
