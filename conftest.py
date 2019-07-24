@@ -297,3 +297,13 @@ def docker_compose_long_running(request):
     options = common_options
     options["--file"] = ["filewriter_tests/compose/docker-compose-lr.yml"]
     return build_and_run(options, request)
+
+
+# SQL tests
+
+
+@pytest.fixture(scope="module", autouse=False)
+def docker_compose_sql(request):
+    options = common_options
+    options["--file"] = ["compose/docker-compose-sql.yml"]
+    return build_and_run(options, request)
