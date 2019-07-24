@@ -7,4 +7,4 @@ docker>=3.4.1
 confluent-kafka==0.11.6
 flatbuffers==1.9
 pytictoc
-
+PyMySQL

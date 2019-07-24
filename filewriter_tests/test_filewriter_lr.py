@@ -54,7 +54,9 @@ def test_long_run(docker_compose_long_running):
         sleep(3)
 
     send_writer_command(
-        "filewriter_tests/commands/stop-command-lr.json", producer, topic="TEST_writerCommandLR"
+        "filewriter_tests/commands/stop-command-lr.json",
+        producer,
+        topic="TEST_writerCommandLR",
     )
     producer.flush()
     sleep(30)
