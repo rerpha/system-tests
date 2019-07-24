@@ -3,7 +3,6 @@ import pytest
 from compose.cli.main import TopLevelCommand, project_from_options
 from confluent_kafka.admin import AdminClient
 from confluent_kafka import Producer
-import docker
 from time import sleep
 
 
@@ -66,22 +65,6 @@ common_options = {"--no-deps": False,
                   "--detach": True,
                   "--build": False
                   }
-
-
-@pytest.fixture(scope="session", autouse=True)
-def build_forwarder_image():
-    client = docker.from_env()
-    print("Building Forwarder image", flush=True)
-    build_args = {}
-    if "http_proxy" in os.environ:
-        build_args["http_proxy"] = os.environ["http_proxy"]
-    if "https_proxy" in os.environ:
-        build_args["https_proxy"] = os.environ["https_proxy"]
-    if "local_conan_server" in os.environ:
-        build_args["local_conan_server"] = os.environ["local_conan_server"]
-    image, logs = client.images.build(path="../", tag="forwarder:latest", rm=False, buildargs=build_args)
-    for item in logs:
-        print(item, flush=True)
 
 
 def run_containers(cmd, options):
