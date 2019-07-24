@@ -9,7 +9,7 @@ def test_data_reaches_file(docker_compose_fw):
     sleep(20)
     # Start file writing
     send_writer_command(
-        "commands/example-json-command.json", producer, start_time=docker_compose
+        "commands/example-json-command.json", producer, start_time=docker_compose_fw
     )
     producer.flush()
     # Give it some time to accumulate data
