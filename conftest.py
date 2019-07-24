@@ -7,8 +7,11 @@ from time import sleep
 
 
 def wait_until_kafka_ready(docker_cmd, docker_options):
-    print('Waiting for Kafka broker to be ready for system tests...', flush=True)
-    conf = {'bootstrap.servers': 'localhost:9092', "metadata.request.timeout.ms": '10000'}
+    print("Waiting for Kafka broker to be ready for system tests...", flush=True)
+    conf = {
+        "bootstrap.servers": "localhost:9092",
+        "metadata.request.timeout.ms": "10000",
+    }
     producer = Producer(**conf)
 
     kafka_ready = False
@@ -17,18 +20,20 @@ def wait_until_kafka_ready(docker_cmd, docker_options):
         nonlocal n_polls
         nonlocal kafka_ready
         if not err:
-            print('Kafka is ready!')
+            print("Kafka is ready!")
             kafka_ready = True
 
     n_polls = 0
     while n_polls < 10 and not kafka_ready:
-        producer.produce('waitUntilUp', value='Test message', on_delivery=delivery_callback)
+        producer.produce(
+            "waitUntilUp", value="Test message", on_delivery=delivery_callback
+        )
         producer.poll(10)
         n_polls += 1
 
     if not kafka_ready:
         docker_cmd.down(docker_options)  # Bring down containers cleanly
-        raise Exception('Kafka broker was not ready after 100 seconds, aborting tests.')
+        raise Exception("Kafka broker was not ready after 100 seconds, aborting tests.")
 
     client = AdminClient(conf)
     topic_ready = False
@@ -44,27 +49,28 @@ def wait_until_kafka_ready(docker_cmd, docker_options):
 
     if not topic_ready:
         docker_cmd.down(docker_options)  # Bring down containers cleanly
-        raise Exception('Kafka topic was not ready after 60 seconds, aborting tests.')
+        raise Exception("Kafka topic was not ready after 60 seconds, aborting tests.")
 
 
-common_options = {"--no-deps": False,
-                  "--always-recreate-deps": False,
-                  "--scale": "",
-                  "--abort-on-container-exit": False,
-                  "SERVICE": "",
-                  "--remove-orphans": False,
-                  "--no-recreate": True,
-                  "--force-recreate": False,
-                  '--no-build': False,
-                  '--no-color': False,
-                  "--rmi": "none",
-                  "--volumes": True,  # Remove volumes when docker-compose down (don't persist kafka and zk data)
-                  "--follow": False,
-                  "--timestamps": False,
-                  "--tail": "all",
-                  "--detach": True,
-                  "--build": False
-                  }
+common_options = {
+    "--no-deps": False,
+    "--always-recreate-deps": False,
+    "--scale": "",
+    "--abort-on-container-exit": False,
+    "SERVICE": "",
+    "--remove-orphans": False,
+    "--no-recreate": True,
+    "--force-recreate": False,
+    "--no-build": False,
+    "--no-color": False,
+    "--rmi": "none",
+    "--volumes": True,  # Remove volumes when docker-compose down (don't persist kafka and zk data)
+    "--follow": False,
+    "--timestamps": False,
+    "--tail": "all",
+    "--detach": True,
+    "--build": False,
+}
 
 
 def run_containers(cmd, options):
@@ -123,8 +129,8 @@ def start_kafka(request):
         options["--project-name"] = "kafka"
         options["--file"] = ["compose/docker-compose-kafka.yml"]
         cmd.down(options)
-    request.addfinalizer(fin)
 
+    request.addfinalizer(fin)
 
 
 # Forwarder tests
@@ -198,7 +204,9 @@ def docker_compose_idle_updates_long_period(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "longi"
-    options["--file"] = ["compose/forwarder/docker-compose-idle-updates-long-period.yml"]
+    options["--file"] = [
+        "compose/forwarder/docker-compose-idle-updates-long-period.yml"
+    ]
 
     build_and_run(options, request)
 
