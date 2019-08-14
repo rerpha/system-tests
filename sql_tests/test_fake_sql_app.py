@@ -5,11 +5,11 @@ import pytest
 
 def test_data_is_inputted(docker_compose_sql):
     sleep(10)  # wait while we initialise a server
-    connection = pymysql.connect(
-        host="*", user="root", passwd="password", port=3306
-    )
+    connection = pymysql.connect(host="*", user="root", passwd="password", port=3306)
     mycursor = connection.cursor()
     db_name = "mydatabase"
+
+    # Simulates a an application interacting with a database.
     mycursor.execute(f"CREATE DATABASE {db_name}")
     sleep(1)
     mycursor.execute("SHOW DATABASES")
