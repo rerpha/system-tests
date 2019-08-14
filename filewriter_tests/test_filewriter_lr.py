@@ -40,8 +40,8 @@ def test_long_run(docker_compose_long_running):
     producer = create_producer()
     sleep(20)
     # Start file writing
-    send_writer_command(os.path.join(
-        "filewriter_tests", "commands", "longrunning.json"),
+    send_writer_command(
+        os.path.join("filewriter_tests", "commands", "longrunning.json"),
         producer,
         topic="TEST_writerCommandLR",
         start_time=docker_compose_long_running,
@@ -55,8 +55,8 @@ def test_long_run(docker_compose_long_running):
         change_pv_value("SIMPLE:DOUBLE", i)
         sleep(3)
 
-    send_writer_command(os.path.join(
-        "filewriter_tests", "commands", "stop-command-lr.json"),
+    send_writer_command(
+        os.path.join("filewriter_tests", "commands", "stop-command-lr.json"),
         producer,
         topic="TEST_writerCommandLR",
     )

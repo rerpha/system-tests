@@ -150,7 +150,9 @@ def docker_compose(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "forwarder"
-    options["--file"] = [os.path.join("forwarder_tests", "compose","docker-compose.yml")]
+    options["--file"] = [
+        os.path.join("forwarder_tests", "compose", "docker-compose.yml")
+    ]
 
     build_and_run(options, request)
 
@@ -165,7 +167,9 @@ def docker_compose_no_command(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "forwarderNoCommand"
-    options["--file"] = [os.path.join("forwarder_tests", "compose", "docker-compose-no-command.yml")]
+    options["--file"] = [
+        os.path.join("forwarder_tests", "compose", "docker-compose-no-command.yml")
+    ]
 
     build_and_run(options, request)
 
@@ -180,7 +184,9 @@ def docker_compose_fake_epics(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "fake"
-    options["--file"] = [os.path.join("forwarder_tests", "compose", "docker-compose-fake-epics.yml")]
+    options["--file"] = [
+        os.path.join("forwarder_tests", "compose", "docker-compose-fake-epics.yml")
+    ]
 
     build_and_run(options, request)
 
@@ -195,7 +201,9 @@ def docker_compose_idle_updates(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "idle"
-    options["--file"] = [os.path.join("forwarder_tests","compose","docker-compose-idle-updates.yml")]
+    options["--file"] = [
+        os.path.join("forwarder_tests", "compose", "docker-compose-idle-updates.yml")
+    ]
 
     build_and_run(options, request)
 
@@ -210,9 +218,11 @@ def docker_compose_idle_updates_long_period(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "longi"
-    options["--file"] = [os.path.join(
-        "forwarder_tests", "compose", "docker-compose-idle-updates-long-period.yml"
-    )]
+    options["--file"] = [
+        os.path.join(
+            "forwarder_tests", "compose", "docker-compose-idle-updates-long-period.yml"
+        )
+    ]
 
     build_and_run(options, request)
 
@@ -227,7 +237,9 @@ def docker_compose_lr(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "lr"
-    options["--file"] = [os.path.join("forwarder_tests", "compose", "docker-compose-long-running.yml")]
+    options["--file"] = [
+        os.path.join("forwarder_tests", "compose", "docker-compose-long-running.yml")
+    ]
 
     build_and_run(options, request)
 
@@ -244,7 +256,9 @@ def docker_compose_fw(request):
 
     # Options must be given as long form
     options = common_options
-    options["--file"] = [os.path.join("filewriter_tests","compose","docker-compose.yml")]
+    options["--file"] = [
+        os.path.join("filewriter_tests", "compose", "docker-compose.yml")
+    ]
     return build_and_run(options, request)
 
 
@@ -257,8 +271,10 @@ def docker_compose_multiple_instances(request):
 
     # Options must be given as long form
     options = common_options
-    options["--file"] = [os.path.join(
-        "filewriter_tests", "compose", "docker-compose-multiple-instances.yml")
+    options["--file"] = [
+        os.path.join(
+            "filewriter_tests", "compose", "docker-compose-multiple-instances.yml"
+        )
     ]
     return build_and_run(options, request)
 
@@ -270,7 +286,9 @@ def docker_compose_stop_command(request):
     """
     print("Started preparing test environment...", flush=True)
     options = common_options
-    options["--file"] = [os.path.join("filewriter_tests","compose","docker-compose-stop-command.yml")]
+    options["--file"] = [
+        os.path.join("filewriter_tests", "compose", "docker-compose-stop-command.yml")
+    ]
     return build_and_run(options, request)
 
 
@@ -282,7 +300,9 @@ def docker_compose_static_data(request):
     print("Started preparing test environment...", flush=True)
     # Options must be given as long form
     options = common_options
-    options["--file"] = [os.path.join("filewriter_tests","compose", "docker-compose-static-data.yml")]
+    options["--file"] = [
+        os.path.join("filewriter_tests", "compose", "docker-compose-static-data.yml")
+    ]
     return build_and_run(options, request)
 
 
@@ -294,7 +314,9 @@ def docker_compose_long_running(request):
     print("Started preparing test environment...", flush=True)
     # Options must be given as long form
     options = common_options
-    options["--file"] = [os.path.join("filewriter_tests", "compose", "docker-compose-lr.yml")]
+    options["--file"] = [
+        os.path.join("filewriter_tests", "compose", "docker-compose-lr.yml")
+    ]
     return build_and_run(options, request)
 
 
