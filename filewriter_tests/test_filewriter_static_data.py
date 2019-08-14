@@ -1,3 +1,5 @@
+import os
+
 from helpers.kafka_helpers import create_producer, send_writer_command
 from helpers.nexushelpers import OpenNexusFileWhenAvailable
 from time import sleep
@@ -8,8 +10,8 @@ def test_static_data_reaches_file(docker_compose_fw):
     producer = create_producer()
     sleep(20)
     # Start file writing
-    send_writer_command(
-        "filewriter_tests/commands/static-data-add.json",
+    send_writer_command(os.path.join(
+        "filewriter_tests", "commands", "static-data-add.json"),
         producer,
         start_time=docker_compose_fw,
     )
@@ -17,12 +19,12 @@ def test_static_data_reaches_file(docker_compose_fw):
     # Give it some time to accumulate data
     sleep(10)
     # Stop file writing
-    send_writer_command("filewriter_tests/commands/static-data-stop.json", producer)
+    send_writer_command(os.path.join("filewriter_tests", "commands", "static-data-stop.json"), producer)
     sleep(10)
-    send_writer_command("filewriter_tests/commands/writer-exit.json", producer)
+    send_writer_command(os.path.join("filewriter_tests", "commands", "writer-exit.json"), producer)
     producer.flush()
 
-    filepath = "filewriter_tests/output-files/output_file_static.nxs"
+    filepath = os.path.join("filewriter_tests", "output-files", "output_file_static.nxs")
     with OpenNexusFileWhenAvailable(filepath) as file:
         assert not file.swmr_mode
         assert file["entry/start_time"].value == "2016-04-12T02:58:52"

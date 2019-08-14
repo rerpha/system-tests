@@ -1,3 +1,5 @@
+import os
+
 from helpers.kafka_helpers import (
     create_producer,
     send_writer_command,
@@ -12,16 +14,16 @@ def test_filewriter_clears_stop_time_between_jobs(docker_compose_stop_command):
     producer = create_producer()
     sleep(10)
     topic = "TEST_writerCommand"
-    send_writer_command(
-        "filewriter_tests/commands/commandwithstoptime.json",
+    send_writer_command(os.path.join(
+        "filewriter_tests","commands","commandwithstoptime.json"),
         producer,
         topic=topic,
         stop_time=str(int(unix_time_milliseconds(datetime.utcnow()))),
     )
 
     sleep(10)
-    send_writer_command(
-        "filewriter_tests/commands/commandwithnostoptime.json", producer, topic=topic
+    send_writer_command(os.path.join(
+        "filewriter_tests","commands","commandwithnostoptime.json"), producer, topic=topic
     )
 
     sleep(10)

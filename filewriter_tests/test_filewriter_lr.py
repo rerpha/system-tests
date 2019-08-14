@@ -1,3 +1,5 @@
+import os
+
 import pytest
 import docker
 from time import sleep
@@ -38,8 +40,8 @@ def test_long_run(docker_compose_long_running):
     producer = create_producer()
     sleep(20)
     # Start file writing
-    send_writer_command(
-        "filewriter_tests/commands/longrunning.json",
+    send_writer_command(os.path.join(
+        "filewriter_tests", "commands", "longrunning.json"),
         producer,
         topic="TEST_writerCommandLR",
         start_time=docker_compose_long_running,
@@ -53,15 +55,15 @@ def test_long_run(docker_compose_long_running):
         change_pv_value("SIMPLE:DOUBLE", i)
         sleep(3)
 
-    send_writer_command(
-        "filewriter_tests/commands/stop-command-lr.json",
+    send_writer_command(os.path.join(
+        "filewriter_tests", "commands", "stop-command-lr.json"),
         producer,
         topic="TEST_writerCommandLR",
     )
     producer.flush()
     sleep(30)
 
-    filepath = "filewriter_tests/output-files/output_file_lr.nxs"
+    filepath = os.path.join("filewriter_tests", "output-files", "output_file_lr.nxs")
     with OpenNexusFileWhenAvailable(filepath) as file:
         counter = 1
         # check values are contiguous
@@ -72,7 +74,7 @@ def test_long_run(docker_compose_long_running):
     # check that the last value is the same as the number of updates
     assert counter == pv_updates + 1
 
-    with open("logs/lr_status_messages.log", "w+") as file:
+    with open(os.path.join("logs", "lr_status_messages.log"), "w+") as file:
         status_messages = consume_everything("TEST_writerStatus")
         for msg in status_messages:
             file.write(str(msg.value(), encoding="utf-8") + "\n")

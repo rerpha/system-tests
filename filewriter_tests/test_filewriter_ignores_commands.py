@@ -1,3 +1,5 @@
+import os
+
 from helpers.kafka_helpers import create_producer, send_writer_command, create_consumer
 from time import sleep
 
@@ -5,16 +7,16 @@ from time import sleep
 def test_ignores_commands_with_incorrect_id(docker_compose_multiple_instances):
     producer = create_producer()
     sleep(20)
-    send_writer_command(
-        "filewriter_tests/commands/add-command-never-ends.json", producer
+    send_writer_command(os.path.join(
+        "filewriter_tests", "commands", "add-command-never-ends.json"), producer
     )
-    send_writer_command(
-        "filewriter_tests/commands/add-command-never-ends2.json", producer
+    send_writer_command(os.path.join(
+        "filewriter_tests", "commands", "add-command-never-ends2.json"), producer
     )
 
     sleep(10)
 
-    send_writer_command("filewriter_tests/commands/writer-stop-single.json", producer)
+    send_writer_command(os.path.join("filewriter_tests", "commands","writer-stop-single.json"), producer)
 
     consumer = create_consumer()
     consumer.subscribe(["TEST_writerStatus2"])

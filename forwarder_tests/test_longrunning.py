@@ -1,3 +1,5 @@
+import os
+
 from helpers.epics_helpers import change_pv_value
 from helpers.kafka_helpers import (
     create_consumer,
@@ -25,8 +27,8 @@ def test_long_run(docker_compose_lr):
     # Set up consumer now and subscribe from earliest offset on data topic
     cons = create_consumer("earliest")
     cons.subscribe(["TEST_forwarderDataLR"])
-    with open("logs/forwarder_lr_stats.log", "w+") as stats_file:
-        with open("logs/forwarder_lr_missedupdates.log", "w+") as file:
+    with open(os.path.join("logs", "forwarder_lr_stats.log"), "w+") as stats_file:
+        with open(os.path.join("logs", "forwarder_lr_missedupdates.log"), "w+") as file:
             for i in range(5150):  # minimum 12 hours with 4 second sleep time
                 # Change pv value now
                 change_pv_value(PVDOUBLE, i)

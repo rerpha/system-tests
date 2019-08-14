@@ -93,7 +93,6 @@ def build_and_run(options, request):
         # Stop the containers then remove them and their volumes (--volumes option)
         print("containers stopping", flush=True)
         log_options = dict(options)
-        # log_options["SERVICE"] = ["forwarder"]
         cmd.logs(log_options)
         options["--timeout"] = 30
         cmd.down(options)
@@ -122,7 +121,7 @@ def start_kafka(request):
     print("Starting zookeeper and kafka", flush=True)
     options = common_options
     options["--project-name"] = "kafka"
-    options["--file"] = ["compose/docker-compose-kafka.yml"]
+    options["--file"] = [os.path.join("compose", "docker-compose-kafka.yml")]
     project = project_from_options(os.path.dirname(__file__), options)
     cmd = TopLevelCommand(project)
 
@@ -134,7 +133,7 @@ def start_kafka(request):
         print("Stopping zookeeper and kafka", flush=True)
         options["--timeout"] = 30
         options["--project-name"] = "kafka"
-        options["--file"] = ["compose/docker-compose-kafka.yml"]
+        options["--file"] = [os.path.join("compose", "docker-compose-kafka.yml")]
         cmd.down(options)
 
     request.addfinalizer(fin)
@@ -151,7 +150,7 @@ def docker_compose(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "forwarder"
-    options["--file"] = ["forwarder_tests/compose/docker-compose.yml"]
+    options["--file"] = [os.path.join("forwarder_tests", "compose","docker-compose.yml")]
 
     build_and_run(options, request)
 
@@ -166,7 +165,7 @@ def docker_compose_no_command(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "forwarderNoCommand"
-    options["--file"] = ["forwarder_tests/compose/docker-compose-no-command.yml"]
+    options["--file"] = [os.path.join("forwarder_tests", "compose", "docker-compose-no-command.yml")]
 
     build_and_run(options, request)
 
@@ -181,7 +180,7 @@ def docker_compose_fake_epics(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "fake"
-    options["--file"] = ["forwarder_tests/compose/docker-compose-fake-epics.yml"]
+    options["--file"] = [os.path.join("forwarder_tests", "compose", "docker-compose-fake-epics.yml")]
 
     build_and_run(options, request)
 
@@ -196,7 +195,7 @@ def docker_compose_idle_updates(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "idle"
-    options["--file"] = ["forwarder_tests/compose/docker-compose-idle-updates.yml"]
+    options["--file"] = [os.path.join("forwarder_tests","compose","docker-compose-idle-updates.yml")]
 
     build_and_run(options, request)
 
@@ -211,9 +210,9 @@ def docker_compose_idle_updates_long_period(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "longi"
-    options["--file"] = [
-        "forwarder_tests/compose/docker-compose-idle-updates-long-period.yml"
-    ]
+    options["--file"] = [os.path.join(
+        "forwarder_tests", "compose", "docker-compose-idle-updates-long-period.yml"
+    )]
 
     build_and_run(options, request)
 
@@ -228,7 +227,7 @@ def docker_compose_lr(request):
     # Options must be given as long form
     options = common_options
     options["--project-name"] = "lr"
-    options["--file"] = ["forwarder_tests/compose/docker-compose-long-running.yml"]
+    options["--file"] = [os.path.join("forwarder_tests", "compose", "docker-compose-long-running.yml")]
 
     build_and_run(options, request)
 
@@ -245,7 +244,7 @@ def docker_compose_fw(request):
 
     # Options must be given as long form
     options = common_options
-    options["--file"] = ["filewriter_tests/compose/docker-compose.yml"]
+    options["--file"] = [os.path.join("filewriter_tests","compose","docker-compose.yml")]
     return build_and_run(options, request)
 
 
@@ -258,8 +257,8 @@ def docker_compose_multiple_instances(request):
 
     # Options must be given as long form
     options = common_options
-    options["--file"] = [
-        "filewriter_tests/compose/docker-compose-multiple-instances.yml"
+    options["--file"] = [os.path.join(
+        "filewriter_tests", "compose", "docker-compose-multiple-instances.yml")
     ]
     return build_and_run(options, request)
 
@@ -271,7 +270,7 @@ def docker_compose_stop_command(request):
     """
     print("Started preparing test environment...", flush=True)
     options = common_options
-    options["--file"] = ["filewriter_tests/compose/docker-compose-stop-command.yml"]
+    options["--file"] = [os.path.join("filewriter_tests","compose","docker-compose-stop-command.yml")]
     return build_and_run(options, request)
 
 
@@ -283,7 +282,7 @@ def docker_compose_static_data(request):
     print("Started preparing test environment...", flush=True)
     # Options must be given as long form
     options = common_options
-    options["--file"] = ["filewriter_tests/compose/docker-compose-static-data.yml"]
+    options["--file"] = [os.path.join("filewriter_tests","compose", "docker-compose-static-data.yml")]
     return build_and_run(options, request)
 
 
@@ -295,7 +294,7 @@ def docker_compose_long_running(request):
     print("Started preparing test environment...", flush=True)
     # Options must be given as long form
     options = common_options
-    options["--file"] = ["filewriter_tests/compose/docker-compose-lr.yml"]
+    options["--file"] = [os.path.join("filewriter_tests", "compose", "docker-compose-lr.yml")]
     return build_and_run(options, request)
 
 
@@ -305,5 +304,5 @@ def docker_compose_long_running(request):
 @pytest.fixture(scope="module", autouse=False)
 def docker_compose_sql(request):
     options = common_options
-    options["--file"] = ["compose/docker-compose-sql.yml"]
+    options["--file"] = [os.path.join("compose", "docker-compose-sql.yml")]
     return build_and_run(options, request)
