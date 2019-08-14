@@ -4,8 +4,8 @@ import pytest
 
 
 def test_data_is_inputted(docker_compose_sql):
-    sleep(10)  # wait while we initialise a server
-    connection = pymysql.connect(host="*", user="root", passwd="password", port=3306)
+    sleep(20)  # wait while we initialise a server
+    connection = pymysql.connect(host="*", user="root", passwd="example")
     mycursor = connection.cursor()
     db_name = "mydatabase"
 
