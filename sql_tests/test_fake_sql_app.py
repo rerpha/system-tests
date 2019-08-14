@@ -3,11 +3,10 @@ from time import sleep
 import pytest
 
 
-@pytest.mark.skip(reason="Still TODO")
 def test_data_is_inputted(docker_compose_sql):
     sleep(10)  # wait while we initialise a server
     connection = pymysql.connect(
-        host="127.0.0.1", user="root", passwd="password", port=3306
+        host="*", user="root", passwd="password", port=3306
     )
     mycursor = connection.cursor()
     db_name = "mydatabase"
