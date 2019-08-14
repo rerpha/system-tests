@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  ioc:
+    image: screamingudder/softioc:2cdeb21
+    stdin_open: true
+    tty: true
+    network_mode: "host"

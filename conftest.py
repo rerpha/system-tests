@@ -139,6 +139,26 @@ def start_kafka(request):
     request.addfinalizer(fin)
 
 
+@pytest.fixture(scope="module", autouse=False)
+def start_ioc(request):
+    options = common_options
+    options["--project-name"] = "ioc"
+    options["--file"] = [os.path.join("compose", "docker-compose-ioc.yml")]
+    project = project_from_options(os.path.dirname(__file__), options)
+    cmd = TopLevelCommand(project)
+
+    cmd.up(options)
+
+    def fin():
+        print("Stopping zookeeper and kafka", flush=True)
+        options["--timeout"] = 30
+        options["--project-name"] = "ioc"
+        options["--file"] = [os.path.join("compose", "docker-compose-ioc.yml")]
+        cmd.down(options)
+
+    request.addfinalizer(fin)
+
+
 # Forwarder tests
 @pytest.fixture(scope="module")
 def docker_compose(request):

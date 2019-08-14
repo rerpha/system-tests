@@ -8,7 +8,7 @@ from helpers.PVs import PVDOUBLE
 CONFIG_TOPIC = "TEST_forwarderConfig"
 
 
-def test_config_file_channel_created_correctly(docker_compose):
+def test_config_file_channel_created_correctly(docker_compose, start_ioc):
     """
     GIVEN Forwarder is started with a config file specifying a PV to forward (forwarder_config.json)
     WHEN PV value is updated

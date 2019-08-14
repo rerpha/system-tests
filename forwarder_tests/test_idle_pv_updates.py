@@ -5,7 +5,7 @@ from time import sleep
 from helpers.PVs import PVDOUBLE
 
 
-def test_forwarder_sends_idle_pv_updates(docker_compose_idle_updates):
+def test_forwarder_sends_idle_pv_updates(docker_compose_idle_updates, start_ioc):
     consumer = create_consumer()
     data_topic = "TEST_forwarderData_idle_updates"
     consumer.subscribe([data_topic])

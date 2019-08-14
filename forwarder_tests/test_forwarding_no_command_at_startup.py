@@ -1,3 +1,4 @@
+import pytest
 from confluent_kafka import TopicPartition
 from helpers.producerwrapper import ProducerWrapper
 from helpers.f142_logdata.Value import Value
@@ -21,6 +22,7 @@ import json
 CONFIG_TOPIC = "TEST_forwarderConfig"
 
 
+@pytest.mark.usefixtures("start_ioc")
 def teardown_function(function):
     """
     Stops forwarder pv listening and resets any values in EPICS
@@ -44,7 +46,9 @@ def teardown_function(function):
     sleep(3)
 
 
-def test_forwarder_sends_pv_updates_single_pv_enum(docker_compose_no_command):
+def test_forwarder_sends_pv_updates_single_pv_enum(
+    docker_compose_no_command, start_ioc
+):
     """
     GIVEN PV of enum type is configured to be forwarded
     WHEN PV value is updated

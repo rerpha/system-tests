@@ -17,7 +17,7 @@ from helpers.f142_logdata.Value import Value
 
 # Skipped by default, Comment out to enable
 @pytest.mark.skip(reason="Long running test disabled by default")
-def test_long_run(docker_compose_lr):
+def test_long_run(docker_compose_lr, start_ioc):
     """
     Test that the channel defined in the config file is created.
 
