@@ -5,6 +5,9 @@
 
 My major project for uni. 
 
-Aim is to produce a repeatable way of testing containerised applications with multiple distributed components.
+The aim is to produce a repeatable, autonomous method of testing containerised applications with multiple distributed components that are spread out over a network.
 
-to run specific tests use pytest -k NAME_OF_TEST
+Usage: 
+`pytest -s .`
+
+to run specific tests use `pytest -k NAME_OF_TEST`
